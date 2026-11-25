@@ -65,8 +65,7 @@ SELECTCOLUMNS(
     FILTER(
         ALL('BI_RH'),
         INT('BI_RH'[DATAADMISSAO]) >= INT(DATE(2026, 10, 15)) &&
-        INT('BI_RH'[DATAADMISSAO]) <= INT(DATE(2026, 11, 15))
-    ),
+        INT('BI_RH'[DATAADMISSAO]) <= INT(DATE(2026, 11, 15)) &&
         'BI_RH'[SECAO] IN {
             "ADMINISTRAÇÃO",
             "RH",
