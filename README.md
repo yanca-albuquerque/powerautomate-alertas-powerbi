@@ -58,6 +58,29 @@ SELECTCOLUMNS(
 )
 ORDER BY [DataOrdenacao] ASC
 
+ou
+
+EVALUATE
+SELECTCOLUMNS(
+    FILTER(
+        ALL('BI_PAINELPESSOAS_ARTEC'),
+        INT('BI_PAINELPESSOAS_ARTEC'[DATAADMISSAO]) >= INT(DATE(2026, 10, 15)) &&
+        INT('BI_PAINELPESSOAS_ARTEC'[DATAADMISSAO]) <= INT(DATE(2026, 11, 15))
+    ),
+        'BI_RH'[SECAO] IN {
+            "ADMINISTRAÇÃO",
+            "RH",
+            "TI",
+        }
+    ),
+    "Filial", 'BI_RH'[Filial],
+    "Matrícula", 'BI_RH'[MATRICULA],
+    "Nome", 'BI_RH'[NOME],
+    "Secao", 'BI_RH'[SECAO],
+    "DataAdmissao", FORMAT('BI_RH'[DATAADMISSAO], "dd/mm/yyyy"),
+    "DataOrdenacao", 'BI_RH'[DATAADMISSAO]
+)
+ORDER BY [DataOrdenacao] ASC
 ```
 
 ---
